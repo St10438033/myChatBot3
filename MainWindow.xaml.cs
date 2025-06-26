@@ -105,6 +105,8 @@ namespace myChatBot3
             chat_page.Visibility = Visibility.Visible;
 
             new backendChatbot();
+
+            TrainModel();
         }
 
         //open mini game method
@@ -125,7 +127,7 @@ namespace myChatBot3
             if (questionIndex >= quizData.Count)
             {
                 //show complete message
-                MessageBox.Show("You already completed the game with " + currentScore + " score");
+                MessageBox.Show("You completed the game with " + currentScore + " score");
                 //then reset the game
                 currentScore = 0;
                 currentScore = 0;
@@ -188,16 +190,16 @@ namespace myChatBot3
                     CorrectChoice = "being safe online",
                     Choices = new List<string>
                     {
-                        "being safe online", "maintaining short password", "using internet platforms securely"
+                        "Being safe online", "Maintaining short password", "Using internet platforms securely", "Security for online bulling"
                 }
                 },
                 new QuizQuestion
                 {
-                    Question = "What is ph?",
-                    CorrectChoice = "27th June",
+                    Question = "What is safe browsing?",
+                    CorrectChoice = "using the internet securely",
                     Choices = new List<string>
                     {
-                         "27th May", "27th Dec", "27th Jan"
+                         "Having a safe password", "Using the internet securely", "Seacrhing safe", "Utilizing virus protection"
                 }
                 },
                 new QuizQuestion
@@ -206,7 +208,7 @@ namespace myChatBot3
                     CorrectChoice = "Virtual Private Network",
                     Choices = new List<string>
                     {
-                        "Virtual Private Network", "Very Private Network", "Variable Private Network"
+                        "Virtual Private Network", "Very Private Network", "Variable Private Network", "Very Protected Network"
                 }
                 },
                 new QuizQuestion
@@ -215,7 +217,7 @@ namespace myChatBot3
                     CorrectChoice = "Fraudulent attempts to obtain sensitive information",
                     Choices = new List<string>
                     {
-                        "A type of malware", "Fraudulent attempts to obtain sensitive information", "A secure connection"
+                        "A type of malware", "Fraudulent attempts to obtain sensitive information", "A secure connection", "Sending links through emails to damage devices"
                 }
                 },
                 new QuizQuestion
@@ -224,7 +226,7 @@ namespace myChatBot3
                     CorrectChoice = "A security system that monitors and controls incoming and outgoing network traffic",
                     Choices = new List<string>
                     {
-                        "A type of virus", "A security system that monitors and controls incoming and outgoing network traffic", "A software for browsing"
+                        "A type of virus", "using packet filtering on networks", "A security system that monitors and controls incoming and outgoing network traffic", "A software for browsing"
                 }
                 },
                 new QuizQuestion
@@ -233,7 +235,7 @@ namespace myChatBot3
                     CorrectChoice = "An extra layer of security",
                     Choices = new List<string>
                     {
-                        "An extra layer of security", "A type of password", "A software update"
+                        "A safe password", "An extra layer of security", "A type of password", "A software update"
                 }
                 },
                 new QuizQuestion
@@ -242,7 +244,7 @@ namespace myChatBot3
                     CorrectChoice = "Malicious software designed to harm or exploit any programmable device",
                     Choices = new List<string>
                     {
-                        "Malicious software designed to harm or exploit any programmable device", "A type of antivirus", "A secure software"
+                        "Malicious software designed to harm or exploit any programmable device", "A type of antivirus", "A secure software", "A computing software"
                 }
                 },
                 new QuizQuestion
@@ -251,7 +253,7 @@ namespace myChatBot3
                     CorrectChoice = "A password that is hard to guess",
                     Choices = new List<string>
                     {
-                        "A password that is hard to guess", "A password with only numbers", "A password with your name"
+                        "A password that is hard to guess", "A password with only numbers", "A password with your name" ,"An encrypted key to unlock data"
                 }
                 },
                 new QuizQuestion
@@ -260,7 +262,7 @@ namespace myChatBot3
                     CorrectChoice = "Manipulating people to gain confidential information",
                     Choices = new List<string>
                     {
-                        "Manipulating people to gain confidential information", "A type of software", "A network protocol"
+                        "Manipulating people to gain confidential information", "A type of software", "A network protocol", "A shoulder surfing method"
                 }
                 },
                 new QuizQuestion
@@ -269,7 +271,7 @@ namespace myChatBot3
                     CorrectChoice = "Converting information into a code to prevent unauthorized access",
                     Choices = new List<string>
                     {
-                        "Converting information into a code to prevent unauthorized access", "A type of firewall", "A method of data storage"
+                        "Utilizing code to lock data", "Converting information into a code to prevent unauthorized access", "A type of firewall", "A method of data storage"
                 }
                 },
                 new QuizQuestion
@@ -278,7 +280,7 @@ namespace myChatBot3
                     CorrectChoice = "Unauthorized access to confidential data",
                     Choices = new List<string>
                     {
-                        "Unauthorized access to confidential data", "A type of software update", "A network connection"
+                        "Unauthorized access to confidential data", "A type of software update", "A network connection", "Breaching device networks"
                 }
                 }//end of second question, put , to add another one
                 };
@@ -326,7 +328,7 @@ namespace myChatBot3
             if (selectedChoice == null)
             {
                 //then show error message
-                MessageBox.Show("Choose one of the 4 choices");
+                MessageBox.Show("Choose one of the 3 choices");
             }
             else
             {
@@ -362,42 +364,9 @@ namespace myChatBot3
         private void add_task(object sender, RoutedEventArgs e)
         {
 
-            //logic for ading task
-
-            //collect what the user enter
-            string collect_question = questions.Text.ToString();
-
-            //validate or check if the user have entered something
-            if (!collect_question.Equals(""))
-            {
-
-                //check if the user want to add the task
-                if (collect_question.ToLower().Contains("add task"))
-                {
-
-                    //add the task to the list view but get date and time
-                    DateTime date = DateTime.Now.Date;
-                    DateTime time = DateTime.Now.ToLocalTime();
-
-
-                    //set the format for the date
-                    string format_date = date.ToString("yyyy-MM-dd");
-
-                    //then add to the list
-                    show_chats.Items.Add("User : " + collect_question + "\n" + format_date + " Time " + time);
-
-                    //set list view to auto scroll
-                    show_chats.ScrollIntoView(show_chats.Items[show_chats.Items.Count - 1]);
-
-                }
-
-
-            }
-            else
-            {
-                //error message
-                MessageBox.Show("Question field is required!!!");
-            }
+            show_chats.Visibility = Visibility.Hidden;
+            mini_game_page.Visibility = Visibility.Hidden;
+            addTask.Visibility = Visibility.Visible;
 
         }
 
@@ -441,7 +410,48 @@ namespace myChatBot3
         private void send(object sender, RoutedEventArgs e)
         {
 
-            
+            //chatbot interactions in listview
+            new backendChatbot();
+
+            TrainModel();
+
+            //logic for ading task
+
+            //collect what the user enter
+            string collect_question = questions2.Text.ToString();
+
+            //validate or check if the user have entered something
+            if (!collect_question.Equals(""))
+            {
+
+                //check if the user want to add the task
+                if (collect_question.ToLower().Contains("add task"))
+                {
+
+                    //add the task to the list view but get date and time
+                    DateTime date = DateTime.Now.Date;
+                    DateTime time = DateTime.Now.ToLocalTime();
+
+
+                    //set the format for the date
+                    string format_date = date.ToString("yyyy-MM-dd");
+
+                    //then add to the list
+                    show_chats.Items.Add("User : " + collect_question + "\n" + format_date + " Time " + time);
+
+                    //set list view to auto scroll
+                    show_chats.ScrollIntoView(show_chats.Items[show_chats.Items.Count - 1]);
+
+                }
+
+
+            }
+            else
+            {
+                //error message
+                MessageBox.Show("Question field is required!!!");
+            }
+
 
 
         }

@@ -44,10 +44,10 @@
 
             <!--ListView for chats-->
         <ListView Height="370" Width="680" Background="White" Margin="0,0,0,50" BorderBrush="LightBlue" BorderThickness="3" 
-                  x:Name="show_chats" MouseDoubleClick="show_chats_MouseDoubleClick"/>
+                  x:Name="show_chats"  MouseDoubleClick="show_chats_MouseDoubleClick"/>
 
-        <TextBlock Height="350" Width="650" Background="White" Margin="0,0,0,50" 
-                   x:Name="show_emotion_detected" />
+                <TextBlock Height="100" Width="500" Background="White" Margin="0,240,0,50" 
+                   x:Name="show_emotion_detected" Visibility="Hidden"/>
 
                 <!--textboX for questions-->
         <TextBox Height="40" Width="495" Margin="0,375,100,0" x:Name="questions" BorderBrush="LightBlue" BorderThickness="3"/>
@@ -62,7 +62,7 @@
 
             
             <!--mini game page-->
-        <Grid Height="440" Width="700" Background="Black" x:Name="mini_game_page" Visibility="Visible" Margin="0,0,0,15">
+        <Grid Height="440" Width="700" Background="Black" x:Name="mini_game_page" Visibility="Hidden" Margin="0,0,0,15">
 
         <TextBlock
         Text="MINI GAME [QUIZ]" 
@@ -86,6 +86,26 @@
 
         </Grid>
             <!--close grid for mini game page-->
+
+            
+            
+            <!--grid for add task-->
+            <Grid Height="440" Width="700" Margin="0,0,0,0" Visibility="Hidden">
+
+                <ListView Height="370" Width="680" Background="White" Margin="0,0,0,50" BorderBrush="LightBlue" BorderThickness="3"
+                          x:Name="addTask" />
+
+
+                <TextBox Height="40" Width="495" Margin="0,375,100,0" x:Name="questions2" BorderBrush="LightBlue" BorderThickness="3"/>
+
+                <!--button for sEND question-->
+                <Button Height="40" Width="100" Margin="500,375,2,0" Content="SEND" Click="send" Foreground="Black" BorderBrush="LightBlue" BorderThickness="3" FontSize="12"
+                />
+
+                <TextBlock Height="30" Width="200" Margin="0,0,0,320" Text="Add Task or Reminder" HorizontalAlignment="Center" FontSize="20"/>
+
+                
+            </Grid>
 
 
         </Grid>
